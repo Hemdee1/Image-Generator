@@ -23,7 +23,6 @@ form.addEventListener("submit", (e) => {
   }
 
   generateImage(text_input, size);
-  textInput.value = "";
 });
 
 async function generateImage(text, size) {
@@ -50,9 +49,11 @@ async function generateImage(text, size) {
     // remove loading
     loader.classList.remove("show");
     document.body.style.overflowY = "scroll";
+    textInput.value = "";
   } catch (error) {
     errorCont.innerHTML = error.message;
-    console.log(error.message);
+    loader.classList.remove("show");
+    document.body.style.overflowY = "scroll";
   }
 }
 
