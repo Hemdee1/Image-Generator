@@ -13,7 +13,6 @@ form.addEventListener("submit", (e) => {
 
   //   reset default
   errorCont.innerHTML = "";
-  imgCont.scr = "";
 
   const text_input = textInput.value;
   const size = sizeInput.value;
@@ -45,13 +44,20 @@ async function generateImage(text, size) {
 
     const data = await response.json();
     showImage(data.data, text);
+    url = data.data;
 
-    // remove loading
-    loader.classList.remove("show");
-    document.body.style.overflowY = "scroll";
-    textInput.value = "";
+    // checking if the image has fully loaded
+    const complete = await waitForImage(imgCont);
+    if (complete === undefined) {
+      // remove loading
+      loader.classList.remove("show");
+      document.body.style.overflowY = "scroll";
+    }
   } catch (error) {
     errorCont.innerHTML = error.message;
+
+    // reset to default
+    removeImage();
     loader.classList.remove("show");
     document.body.style.overflowY = "scroll";
   }
@@ -61,4 +67,20 @@ function showImage(url, text) {
   imgCont.src = url;
   imgCont.setAttribute("alt", text);
   textCont.innerHTML = text;
+}
+
+function removeImage() {
+  imgCont.src = "";
+  imgCont.setAttribute("alt", "");
+  textCont.innerHTML = "";
+}
+
+function waitForImage(imgElem) {
+  return new Promise((res) => {
+    if (imgElem.complete) {
+      return res();
+    }
+    imgElem.onload = () => res();
+    imgElem.onerror = () => res();
+  });
 }

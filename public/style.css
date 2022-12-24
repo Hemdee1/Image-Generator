@@ -59,7 +59,7 @@ select {
 
 input:focus,
 select:focus {
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px white;
 }
 
 button {
@@ -78,6 +78,8 @@ img {
   margin-top: 3rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   max-width: 100%;
+  min-height: 100px;
+  object-position: cover;
 }
 
 h3 {
