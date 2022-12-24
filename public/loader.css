@@ -1,0 +1,43 @@
+.loader {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.loader.show {
+  display: flex;
+}
+
+.loader5 {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 30px solid #4183d7;
+  border-top: 30px solid #f5ab35;
+  -webkit-animation: loader5 1.2s ease-in-out infinite alternate;
+  animation: loader5 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes loader5 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(720deg);
+  }
+}
+@-webkit-keyframes loader5 {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(720deg);
+  }
+}

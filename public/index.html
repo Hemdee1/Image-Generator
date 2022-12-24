@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate Image</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="loader.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Image Generator with Open AI</h1>
+    </header>
+    <main>
+      <form>
+        <label for="text_input">Image Description:</label>
+        <input type="text" id="text_input" class="text_input" />
+        <label for="size">Size:</label>
+        <select name="size" id="size">
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+        <button>Submit</button>
+        <p class="error" id="error"></p>
+      </form>
+
+      <!-- image -->
+      <img src="" alt="" id="image" />
+      <h3 id="text"></h3>
+
+      <!-- loader -->
+      <div class="loader" id="loader">
+        <div class="loader5"></div>
+      </div>
+    </main>
+  </body>
+</html>

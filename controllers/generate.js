@@ -9,11 +9,16 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const generateImage = async (req, res) => {
+  const { text, size } = req.body;
+
+  const sizeInput =
+    size === "small" ? "256x256" : size === "medium" ? "512x512" : "1024x1024";
+
   try {
     const response = await openai.createImage({
-      prompt: "a boy with a crown walking on the moon",
+      prompt: text,
       n: 1,
-      size: "512x512",
+      size: sizeInput,
     });
 
     const image_url = response.data.data[0].url;
@@ -21,6 +26,7 @@ const generateImage = async (req, res) => {
     res.json({ data: image_url });
   } catch (error) {
     console.log(error.message);
+    console.log(error.response);
     res.status(400).json({ error: error.message });
   }
 };
