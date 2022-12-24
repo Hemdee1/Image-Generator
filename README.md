@@ -1,2 +1,3 @@
 # Image-Generator
-An image generated app created with NodeJS, HTML, CSSS and OPEN AI API
+
+An image generator App created with NodeJS, HTML, CSSS and OPEN AI API
